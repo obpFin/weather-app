@@ -1,0 +1,68 @@
+.App {
+  text-align: center;
+}
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  text-align: center;
+  font-size: 24px;
+  background-color: #ccf3ff;
+}
+
+h2 {
+  background-color: #ccf2ff;
+  border-radius: 5px;
+  padding: 10px;
+  opacity: 0.7;
+}
+
+#content {
+  padding: 10px;
+  background-color: white;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+.center {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+#weatherIcon {
+  margin-top: -20px;
+  margin-bottom: -15px;
+}
+
+p {
+  letter-spacing: 2px;
+}
+
+p.thick {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+p.celsius {
+  margin-bottom: -6px;
+}
+
+button {
+ background-color: #ccf2ff;
+}
+
+button:hover {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.text {
+  background-color: #ccf2ff;
+ 
+}
