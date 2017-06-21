@@ -10,8 +10,13 @@ import './App.css';
     showKelvins: true 
   }
 
-  const Coordinates = React.createClass({
-    getCoordinates:function() {
+  class Coordinates extends React.Component{
+
+    constructor (props) {
+      super();
+    }
+
+    getCoordinates() {
       if ("geolocation" in navigator) {
 
         function success(position) {
@@ -30,12 +35,18 @@ import './App.css';
       }    
     },
 
-    render:function(){
+    render(){
 
     }  
-  });
+  }
 
-class App extends Component {
+  class Weather extends React.Component {
+    getInitalstate: function(){
+      return INITIAL_STATE;
+    }
+  };
+
+class App extends React.Component {
 
   render() {
     return (
