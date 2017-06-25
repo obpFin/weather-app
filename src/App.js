@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
+import { myConfig } from './config.js';
 import './App.css';
 
-  const INITIAL_STATE = function() {
+
+
+  const INITIAL_STATE = {
     kelvin: 0,
-    city: Helsinki,
+    city: 'Helsinki',
     windspeed: 0,
     humidity: 0, 
     showKelvins: true 
@@ -14,34 +17,40 @@ import './App.css';
 
     constructor (props) {
       super();
+      this.state = {
+        latitude:0, 
+        longitude:0
+      };
     }
 
     getCoordinates() {
-      if ("geolocation" in navigator) {
+      return new Promise(function (resolve, reject) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+        resolve([position.coords.latitude, position.coords.longitude]);
+        });
+      });   
+    }
 
-        function success(position) {
-          var latitude = position.coords.latitude;
-          var longitude = position.coords.longitude;
-          return {latitude,longitude};
-        }
+    getInitalstate() {
+      return INITIAL_STATE;
+    }
 
-        function error() {
-          console.log("Unable to retrieve your location");
-        }
-
-        return navigator.geolocation.getCurrentPosition(success, error); 
-      } else {
-        console.log("geolocation is not available");
-      }    
-    },
+    componentDidMount() {
+      var position = this.getCoordinates();
+      fetch('http://api.openweathermap.org/data/2.5/weather?lat=' + this.position.latitude +
+      "&lon=" + this.position.longitude + "&APPID="+myConfig.apiUrl)
+        .then(response => response.json())
+        .then()
+        .catch();
+    }
 
     render(){
-
+      return null;
     }  
   }
 
   class Weather extends React.Component {
-    getInitalstate: function(){
+    getInitalstate(){
       return INITIAL_STATE;
     }
   };
