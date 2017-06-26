@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 import logo from './logo.svg';
 import { myConfig } from './config.js';
 import './App.css';
@@ -24,11 +25,14 @@ import './App.css';
     }
 
     getCoordinates() {
-      return new Promise(function (resolve, reject) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-        resolve([position.coords.latitude, position.coords.longitude]);
-        });
-      });   
+        Axios.get('https://freegeoip.net/json/', {
+          method: 'get'
+        }).then(response => {
+          var position = response.data;
+          this.setState({latitude:position.latitude,longitude:position.longitude});
+        }).catch(function(error){
+            console.log("error getting coordinates",error)
+        }); 
     }
 
     getInitalstate() {
@@ -37,14 +41,20 @@ import './App.css';
 
     componentDidMount() {
       var position = this.getCoordinates();
-      fetch('http://api.openweathermap.org/data/2.5/weather?lat=' + this.position.latitude +
-      "&lon=" + this.position.longitude + "&APPID="+myConfig.apiUrl)
+      fetch('http://api.openweathermap.org/data/2.5/weather?lat=' + this.state.latitude +
+      "&lon=" + this.state.longitude + "&APPID="+myConfig.apiUrl)
         .then(response => response.json())
-        .then()
-        .catch();
+        .then(responseData => {
+          this.setState({weather:responseData});
+        })
+        .catch(error => {
+          console.log('Error getting weather data',error);
+        });
     }
 
     render(){
+      console.log(this.state.latitude);
+      console.log(this.state.longitude);
       return null;
     }  
   }
@@ -60,20 +70,20 @@ class App extends React.Component {
   render() {
     return (
       <div id="app">
+        <Coordinates />
         <div id="title">
         </div>
-        <p id="city" class="thick"></p>
-        <img id="weatherIcon" src="" />
-        <p id="celsius" class="celsius thick"></p>
-        <button class="toggle">Convert to Fahrenheit</button>
-        <div class="text">
-          <p id="desc" class="thick"></p>
+        <p id="city" className="thick"></p>
+        <p id="celsius" className="celsius thick"></p>
+        <button className="toggle">Convert to Fahrenheit</button>
+        <div className="text">
+          <p id="desc" className="thick"></p>
         </div>
-        <div class="text">
-          <p id="wind" class="thick"></p>
+        <div className="text">
+          <p id="wind" className="thick"></p>
         </div>
-        <div class="text">
-          <p id="hum" class="thick"></p>
+        <div className="text">
+          <p id="hum" className="thick"></p>
         </div>
       </div>  
     );   
