@@ -54,12 +54,12 @@ p.celsius {
 }
 
 button {
- background-color: #ccf2ff;
+ #background-color: #ccf2ff;
 }
 
 button:hover {
   cursor: pointer;
-  cursor: hand;
+  #cursor: hand;
 }
 
 .text {
