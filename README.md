@@ -1,5 +1,5 @@
 Weather-App
 
-- React
-- JSON
+- React.js
+- Axios
 - Other cool stuff
