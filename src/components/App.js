@@ -36,6 +36,7 @@ class App extends React.Component {
 					<p>{this.state.latitude}</p>
 					<p>{this.state.longitude}</p>
 				</div>
+				<Weather />
 				<p id="city" className="thick"></p>
 				<p id="celsius" className="celsius thick"></p>
 				<button className="toggle">Convert to Fahrenheit</button>

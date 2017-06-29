@@ -17,24 +17,27 @@ class Weather extends React.Component {
 		super();
 		this.state = {
 			latitude:0, 
-			longitude:0
+			longitude:0,
+			kelvins:0,
 		};
 	}
 
-	getInitalstate(){
-		return INITIAL_STATE;
+	componentDidMount(){
+		this.getCoordinates().then( () => {
+		this.getWeather();
+		})
 	}
 
-
-
 	getCoordinates() {
-		Axios.get('https://freegeoip.net/json/', {
+		return new Promise(function (fulfill, reject){
+			Axios.get('https://freegeoip.net/json/', {
 			method: 'get'
-		}).then(response => {
-			var position = response.data;
-			this.setState({latitude:position.latitude,longitude:position.longitude});
-		}).catch(error => {
+			}).then(response => {
+				var position = response.data;
+				this.setState({latitude:position.latitude,longitude:position.longitude});
+			}).catch(error => {
 				console.log("error getting coordinates",error)
+			});
 		});
 	}
 
@@ -43,18 +46,24 @@ class Weather extends React.Component {
 			"&lon=" + this.state.longitude + "&APPID="+myConfig.apiUrl, {
 			method: 'get'
 		}).then(response => {
-			var weather = response.data;
-			console.log(weather);
+			console.log(response);
+			this.setState({ kelvins:response.data });
 		}).catch(error => {
 			console.log("error getting weather",error)
 		});	
 	}
 
 	render() {
-		return null;
+
+		return (
+			<div>
+				<p>Kelvins:{this.state.kelvins}</p>	
+			</div>
+
+			);
 	}
 
-};
+}
 
 
 
