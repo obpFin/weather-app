@@ -14,20 +14,9 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-
-		Axios.get('https://freegeoip.net/json/', {
-			method: 'get'
-		}).then(response => {
-			var position = response.data;
-			this.setState({latitude:position.latitude,longitude:position.longitude});
-		}).catch(error => {
-			console.log("error getting coordinates",error)
-		});
 	}
 
 	render() {
-		console.log(this.state.latitude);
-		console.log(this.state.longitude);
 
 		return (
 			<div id="app">
