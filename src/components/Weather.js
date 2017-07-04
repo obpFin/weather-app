@@ -1,7 +1,5 @@
 import React from 'react';
-import Axios from 'axios';
 import PropTypes from 'prop-types';
-import MyConfig from '../config.js';
 import Api from '../utils/Api.js';
 
 class Weather extends React.Component {
@@ -9,9 +7,9 @@ class Weather extends React.Component {
 	constructor (props) {
 		super();
 		this.state = {
-			latitude:0, 
-			longitude:0,
-			kelvins:0,
+			latitude: 0, 
+			longitude: 0,
+			weather: null
 		};
 	}
 
@@ -19,20 +17,24 @@ class Weather extends React.Component {
 		Api.fetchCoordinates()
 			.then(res => {
 				console.log('res',res);
-				Api.fetchWeather(res.latitude,res.longitude);
-			}).catch(error => {
-				console.log("error getting weather",error)
-		});
+				Api.fetchDarkSkyWeather(res.latitude,res.longitude)
+					.then(res => {
+						this.setState({
+							weather: res
+						})
+					})
+			});
 	}
 
 	render() {
-
 		return (
 			<div>
-				<p>Kelvins:{this.state.kelvins}</p>	
+				{!this.state.weather
+				 ? <p>Loading</p>
+				 : <p>{this.state.weather.daily.summary}</p>}	
 			</div>
 
-			);
+		);
 	}
 
 }

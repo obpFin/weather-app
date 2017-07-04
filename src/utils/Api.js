@@ -26,8 +26,8 @@ export default {
 	},
 
 	fetchDarkSkyWeather: function(lat,lon) {
-		return Axios.get('https://api.darksky.net/forecast/' + myConfig.apiUrl +
-		lat + ',' + lon, {
+		return Axios.get('https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/' + myConfig.darkSky +
+		'/' + lat + ',' + lon + '?units=si&lang=fi', {
 		method: 'get'
 		}).then(response => {
 			console.log(response);
