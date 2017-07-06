@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:300&subset=latin-ext');
 
 body {
-  #background-image: url("./images/palmTrees.jpg");
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
   font-color:#FFFFFF;
 }
 
@@ -30,13 +29,16 @@ h2 {
 
 li {
   list-style-type: none;
-  color: #CECBCB;
+  color: #FFFFFF;
 
 }
 
 .container {
-  max-width: 1200px;
+  #background-image: url("./images/palmTrees.jpg");
+  background-color: #53c0cc;
+  max-width: 800px;
   margin: 0 auto;
+  border-radius: 5px;
 }
 
 .periods {
@@ -54,12 +56,16 @@ p {
   letter-spacing: 2px;
 }
 
-
 .city {
-font-size: 32px; 
+  font-size: 32px; 
 }
+
 .degrees {
   font-size: 46px; 
+}
 
+.icons {
+  height: 20% !important;
+  width: 20% !important;
 }
 

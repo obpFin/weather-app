@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Api from '../utils/Api.js';
+import Skycons from 'react-skycons';
 
 function SelectPeriod(props) {
 
@@ -74,8 +75,9 @@ class Weather extends React.Component {
 				 ? <p>Loading</p>
 				 : <div>
 				 	<p className='city'>{this.state.city}</p>
-				 	<p className='degrees'>{this.state.weather.currently.temperature} 'C</p>
-				 	<p>{this.state.weather.daily.summary}</p>
+				 	<Skycons className='icons' color='white' icon={this.state.weather.currently.icon.toUpperCase().replace(/-/g,'_')} autoplay={true}/>
+				 	<p className='degrees'>{Math.round(this.state.weather.currently.temperature)}&#x00B0;C</p>
+				 	<p>{this.state.weather.daily.data[0].summary}</p>
 				   </div>}
 			</div>
 
