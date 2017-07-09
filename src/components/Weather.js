@@ -44,18 +44,19 @@ class Weather extends React.Component {
 	componentDidMount(){
 		this.updatePeriod(this.state.selectedPeriod);
 
-		Api.fetchCoordinates()
+		Api.fetchGoogleApiCoordinates()
 			.then(res => {
-				this.setState({
-					city:res.city
-				})
-				Api.fetchDarkSkyWeather(res.latitude,res.longitude)
+				Api.fetchGoogleGeocodingLocation(res.location.lat,res.location.lng)
 					.then(res => {
-						this.setState({
-							weather: res
-						})
+						this.setState({city:Api.getCityFromLocationResponse(res)})
+					});
+				Api.fetchDarkSkyWeather(res.location.lat,res.location.lng)
+					.then(res => {
+						this.setState({weather: res})			
 					})
-			});
+				})
+				
+			
 	}
 
 	updatePeriod(period) {
@@ -77,7 +78,7 @@ class Weather extends React.Component {
 				 	<p className='city'>{this.state.city}</p>
 				 	<Skycons className='icons' color='white' icon={this.state.weather.currently.icon.toUpperCase().replace(/-/g,'_')} autoplay={true}/>
 				 	<p className='degrees'>{Math.round(this.state.weather.currently.temperature)}&#x00B0;C</p>
-				 	<p>{this.state.weather.daily.data[0].summary}</p>
+				 	<p className='daily-summary'>{this.state.weather.currently.summary}</p>
 				   </div>}
 			</div>
 

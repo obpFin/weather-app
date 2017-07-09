@@ -64,6 +64,10 @@ p {
   font-size: 46px; 
 }
 
+.daily-summary {
+  padding:50px;
+}
+
 .icons {
   height: 20% !important;
   width: 20% !important;
