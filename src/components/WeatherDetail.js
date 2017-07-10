@@ -3,39 +3,14 @@ import PropTypes from 'prop-types';
 import Api from '../utils/Api.js';
 import Skycons from 'react-skycons';
 
-function SelectPeriod(props) {
-
-	var periods = ['Day','Hour','Summary'];
-
-	return (
-		<ul className='periods'>
-			{periods.map(function(period) {
-				return (
-					<li 
-						style={period === props.selectedPeriod ? {color: '#000000'} : null}
-						onClick={props.onSelect.bind(null, period)}
-						key={period}>
-						{period}
-					</li>
-				)
-			})}
-		</ul>
-	)
-}
-
-SelectPeriod.propTypes = {
-	selectedPeriod: PropTypes.string.isRequired,
-	onSelect: PropTypes.func.isRequired,
-}
-
-class Weather extends React.Component {
+class WeatherDetail extends React.Component {
 
 	constructor (props) {
 		super();
 		this.state = {
 			city:null,
 			weather: null,
-			selectedPeriod:'Day'
+			selectedPeriod:'Summary'
 		};
 		this.updatePeriod = this.updatePeriod.bind(this);
 
@@ -103,4 +78,4 @@ class Weather extends React.Component {
 
 
 
-export default Weather;
+export default WeatherDetail;
