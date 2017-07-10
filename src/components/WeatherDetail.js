@@ -9,8 +9,7 @@ class WeatherDetail extends React.Component {
 		super();
 		this.state = {
 			city:null,
-			weather: null,
-			selectedPeriod:'Summary'
+			weather: null
 		};
 		this.updatePeriod = this.updatePeriod.bind(this);
 
@@ -29,16 +28,7 @@ class WeatherDetail extends React.Component {
 					.then(res => {
 						this.setState({weather: res})			
 					})
-				})
-				
-			
-	}
-
-	updatePeriod(period) {
-		this.setState({
-				selectedPeriod: period,
-				//weather:null
-		});
+				})	
 	}
 
 	render() {
@@ -56,10 +46,8 @@ class WeatherDetail extends React.Component {
 				 	<p className='daily-summary'>{this.state.weather.currently.summary}</p>
 				   </div>}
 			</div>
-
 		);
 	}
-
 }
 
 

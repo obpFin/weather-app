@@ -1,32 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Api from '../utils/Api.js';
 import Skycons from 'react-skycons';
-
-function SelectPeriod(props) {
-
-	var periods = ['Summary','Day','Hour'];
-
-	return (
-		<ul className='periods'>
-			{periods.map(function(period) {
-				return (
-					<li 
-						style={period === props.selectedPeriod ? {color: '#000000'} : null}
-						onClick={props.onSelect.bind(null, period)}
-						key={period}>
-						{period}
-					</li>
-				)
-			})}
-		</ul>
-	)
-}
-
-SelectPeriod.propTypes = {
-	selectedPeriod: PropTypes.string.isRequired,
-	onSelect: PropTypes.func.isRequired,
-}
 
 class WeatherSummary extends React.Component {
 
@@ -38,7 +12,6 @@ class WeatherSummary extends React.Component {
 			selectedPeriod:'Summary'
 		};
 		this.updatePeriod = this.updatePeriod.bind(this);
-
 	}
 
 	state = {
@@ -46,6 +19,7 @@ class WeatherSummary extends React.Component {
 			weather: null,
 			selectedPeriod:'Summary'
 		};
+
 	componentDidMount(){
 		this.updatePeriod(this.state.selectedPeriod);
 
@@ -59,9 +33,7 @@ class WeatherSummary extends React.Component {
 					.then(res => {
 						this.setState({weather: res})			
 					})
-				})
-				
-			
+			})	
 	}
 
 	updatePeriod(period) {
@@ -74,10 +46,6 @@ class WeatherSummary extends React.Component {
 	render() {
 		return (
 			<div>
-			{/*
-				<SelectPeriod selectedPeriod={this.state.selectedPeriod}
-				onSelect={this.updatePeriod}
-				/> */}
 				{!this.state.weather
 				 ? <p>Loading</p>
 				 : <div>
@@ -90,7 +58,6 @@ class WeatherSummary extends React.Component {
 
 		);
 	}
-
 }
 
 

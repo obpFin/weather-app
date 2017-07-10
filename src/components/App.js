@@ -8,7 +8,6 @@ import WeatherSummary from './WeatherSummary.js'
 class App extends React.Component {
 
 	render() {
-
 		return (
 			<div className="container" id="app">
 				<div className='main-content'>

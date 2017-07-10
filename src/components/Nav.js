@@ -1,9 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class Nav extends React.Component {
-
-
 
 	constructor (props) {
 		super();
@@ -12,21 +9,12 @@ class Nav extends React.Component {
 			onSelect:this.updatePeriod
 		};
 		this.updatePeriod = this.updatePeriod.bind(this);
-
 	}
-
-	//selectedPeriod={this.state.selectedPeriod}
-				//onSelect={this.updatePeriod}
 
 	componentDidMount(){
 		this.updatePeriod(this.state.selectedPeriod);
 	}
-/*
-	SelectPeriod.propTypes = {
-		selectedPeriod: PropTypes.string.isRequired,
-		onSelect: PropTypes.func.isRequired,
-	}
-*/
+
 	updatePeriod(period) {
 		this.setState({
 			selectedPeriod: period
