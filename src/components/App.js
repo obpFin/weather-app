@@ -11,8 +11,8 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div className="container top" id="app">
-				<div className='main-content'>
+			<div className="container" id="app">
+				<div className='main-content top'>
 				<Nav />
 				<WeatherSummary />
 				</div>
