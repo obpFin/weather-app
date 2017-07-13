@@ -1,58 +1,32 @@
 import React from 'react';
-import Api from '../utils/Api.js';
 import Skycons from 'react-skycons';
+import {Circle} from 'better-react-spinkit';
 
 class WeatherSummary extends React.Component {
 
-	constructor (props) {
-		super();
-		this.state = {
-			city:null,
-			weather: null,
-			selectedPeriod:'Summary'
-		};
-		this.updatePeriod = this.updatePeriod.bind(this);
-	}
+
 
 	state = {
-			city:null,
-			weather: null,
-			selectedPeriod:'Summary'
-		};
+
+	};
 
 	componentDidMount(){
-		this.updatePeriod(this.state.selectedPeriod);
 
-		Api.fetchGoogleApiCoordinates()
-			.then(res => {
-				Api.fetchGoogleGeocodingLocation(res.location.lat,res.location.lng)
-					.then(res => {
-						this.setState({city:Api.getCityFromLocationResponse(res)})
-					});
-				Api.fetchDarkSkyWeather(res.location.lat,res.location.lng)
-					.then(res => {
-						this.setState({weather: res})			
-					})
-			})	
 	}
 
-	updatePeriod(period) {
-		this.setState({
-				selectedPeriod: period,
-				//weather:null
-		});
-	}
+
+	
 
 	render() {
 		return (
 			<div>
-				{!this.state.weather
-				 ? <p>Loading</p>
+				{!this.props.weather
+				 ? <Circle />
 				 : <div>
-				 	<p className='city'>{this.state.city}</p>
-				 	<Skycons className='icons' color='white' icon={this.state.weather.currently.icon.toUpperCase().replace(/-/g,'_')} autoplay={true}/>
-				 	<p className='degrees'>{Math.round(this.state.weather.currently.temperature)}&#x00B0;C</p>
-				 	<p className='daily-summary'>{this.state.weather.currently.summary}</p>
+				 	<p className='city'>{this.props.city}</p>
+				 	<Skycons className='icons' color='white' icon={this.props.weather.currently.icon.toUpperCase().replace(/-/g,'_')} autoplay={true}/>
+				 	<p className='degrees'>{Math.round(this.props.weather.currently.temperature)}&#x00B0;C</p>
+				 	<p className='daily-summary'>{this.props.weather.currently.summary}</p>
 				   </div>}
 			</div>
 
