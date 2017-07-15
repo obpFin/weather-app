@@ -24,7 +24,7 @@ class WeatherDetail extends React.Component {
                         <tbody>
                         <tr className='row'>
                             <td className='row'>
-                                <Moment interval={1000} format="ddd, h:mm:ss a" unix tz="Europe/Helsinki" >{(this.props.weather.currently.time)}</Moment>
+                                <Moment interval={1000} format="ddd, h:mm a" unix tz="Europe/Helsinki" >{(this.props.weather.currently.time)}</Moment>
                             </td>
                             <td className='row'>Windspeed: {Math.round(this.props.weather.currently.windSpeed * 1.6) + ' km/h'}</td>
                             <td className='row'>Cloudcover: {Math.round((this.props.weather.currently.cloudCover * 100)) + '%'}</td>

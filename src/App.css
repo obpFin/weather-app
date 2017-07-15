@@ -54,7 +54,8 @@ p {
 }
 
 .city {
-  font-size: 32px; 
+  padding-top: 0.8em;
+  font-size: 3em; 
 }
 
 .degrees {
@@ -63,7 +64,7 @@ p {
 }
 
 .daily-summary {
-  padding:40px;
+  padding:30px;
   font-size: 24px;
 }
 
@@ -79,10 +80,9 @@ p {
 }
 
 .row {
-  padding:20px;
+  padding:20px 31px;
+
 }
-
-
 
 .table {
   display: flex

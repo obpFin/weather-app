@@ -34,7 +34,8 @@ componentDidMount(){
     return (
       <div className="container" id="app">
         <div className='main-content top'>
-        <Nav />
+        {//<Nav />
+        }
         <WeatherSummary weather={this.state.weather} city={this.state.city}/>
         </div>
         <div className='footer'>
