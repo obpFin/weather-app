@@ -18,6 +18,7 @@ class WeatherSummary extends React.Component {
     
 
     render() {
+        
         return (
             <div>
                 {!this.props.weather
