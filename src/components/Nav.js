@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link,NavLink} from 'react-router-dom';
 
 class Nav extends React.Component {
 
@@ -12,7 +13,6 @@ class Nav extends React.Component {
     }
 
     componentDidMount(){
-        this.updatePeriod(this.state.selectedPeriod);
     }
 
     updatePeriod(period) {
@@ -25,17 +25,22 @@ class Nav extends React.Component {
         var periods = ['Summary','Day','Hour'];
 
         return (
-            <ul className='periods'>
-                {periods.map(period => {
-                    return (
-                        <li 
-                            style={period === this.state.selectedPeriod ? {color: '#000000'} : null}
-                            onClick={this.state.onSelect.bind(this, period)}
-                            key={period}>
-                            {period}
-                        </li>
-                    )
-                })}
+            <ul className='nav'>
+                <li>
+                    <NavLink activeClassName='active' to='/summary'>
+                        Summary
+                    </NavLink>
+                </li> 
+                 <li>
+                    <NavLink activeClassName='active' to='/daily'>
+                        Daily
+                    </NavLink>
+                </li>
+                 <li>
+                    <NavLink activeClassName='active' to='/hourly'>
+                        Hourly
+                    </NavLink>
+                </li>                     
             </ul>
         )
     }

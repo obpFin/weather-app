@@ -6,6 +6,19 @@ body {
   color:#FFFFFF;
 }
 
+p {
+  letter-spacing: 2px;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
 #app {
   font-family: 'Work Sans', sans-serif;
   opacity: .6;
@@ -24,12 +37,6 @@ body {
 
 }
 
-li {
-  list-style-type: none;
-  color: #FFFFFF;
-
-}
-
 .container {
   #background-image: url("./images/palmTrees.jpg");
   #background-color: #53c0cc;
@@ -38,39 +45,62 @@ li {
   border-radius: 5px;
 }
 
-.periods {
+.nav {
   display: flex;
   justify-content: center;
 }
 
-.periods li  {
+.nav li  {
   margin: 10px;
   font-weight: bold;
   cursor: pointer;
 }
 
-p {
-  letter-spacing: 2px;
+.active {
+  font-weight: bold;
+  color: black;
 }
 
-.city {
-  padding-top: 0.8em;
+.summary-city {
   font-size: 3em; 
 }
 
-.degrees {
+.summary-degrees {
+  font-size: 6em; 
+  margin: 20px;
+}
+
+.summary-summary {
+  padding:10px;
+  font-size: 28px;
+}
+
+.summary-icons {
+  height: 20% !important;
+  width: 20% !important;
+}
+
+.daily-city {
+  font-size: 1em; 
+}
+
+.daily-degrees {
   font-size: 6em; 
   margin: 20px;
 }
 
 .daily-summary {
-  padding:30px;
-  font-size: 24px;
+  padding:10px;
+  font-size: 28px;
 }
 
-.icons {
+.daily-icons {
   height: 20% !important;
   width: 20% !important;
+}
+
+.hourly-city {
+  font-size: 4em; 
 }
 
 .footer {

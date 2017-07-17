@@ -3,11 +3,10 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import '../App.css';
 import Nav from './Nav.js'
 import WeatherSummary from './WeatherSummary.js'
-import WeatherDetail from './WeatherDetail.js'
+import WeatherDaily from './WeatherDaily.js'
+import WeatherHourly from './WeatherHourly.js'
+import WeatherFooter from './WeatherFooter.js'
 import Api from '../utils/Api.js';
-
-//var Router = ReactRouter.BrowserRouter;
-//var Route = ReactRouter.Route;
 
 class App extends React.Component {
 
@@ -16,7 +15,6 @@ constructor (props) {
   this.state = {
     weather: null,
     city:null,
-    view:'summary'
   };
 
 }
@@ -40,13 +38,13 @@ componentDidMount(){
         <Router>
           <div className="container" id="app">
             <div className='main-content top'>
-            {//<Nav />
-            }
-            <Route path='/summary' component={WeatherSummary} />
-            <WeatherSummary weather={this.state.weather} city={this.state.city}/>
+                <Nav />
+                <Route path="/summary" render={(...props) => <WeatherSummary {...props} weather={this.state.weather} city={this.state.city} />} />
+                <Route path="/daily" render={(...props) => <WeatherDaily {...props} weather={this.state.weather} city={this.state.city} />} />
+                <Route path="/hourly" render={(...props) => <WeatherHourly {...props} weather={this.state.weather} city={this.state.city} />} />
             </div>
             <div className='footer'>
-              <WeatherDetail weather={this.state.weather}/>
+                <WeatherFooter weather={this.state.weather}/>
             </div>
           </div>  
       </Router>

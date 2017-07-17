@@ -4,7 +4,7 @@ import {Circle} from 'better-react-spinkit';
 import 'moment-timezone';
 
 
-class WeatherDetail extends React.Component {   
+class WeatherFooter extends React.Component {   
 
     state = {
 
@@ -17,8 +17,8 @@ class WeatherDetail extends React.Component {
     render() {
         return (
             <div>
-                {!this.props.weather
-                 ? <Circle />
+                {!this.props.weather ?
+                 <div></div>
                  : <div>
                     <table>
                         <tbody>
@@ -54,4 +54,4 @@ class WeatherDetail extends React.Component {
 
 
 
-export default WeatherDetail;
+export default WeatherFooter;
