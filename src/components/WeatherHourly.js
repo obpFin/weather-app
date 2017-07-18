@@ -12,13 +12,13 @@ const DailyDegrees = props => {
                     {props.weather.hourly.data
                         .map( (hour, index) => {
                             if (index < 7) {
-                            return (
-                                <td key = {index}>
-                                <Skycons className='hourly-icons' color='white' icon={hour.icon.toUpperCase().replace(/-/g,'_')} autoplay={true}/>  
-                                <Moment className='hourly-time' format="HH" unix tz="Europe/Helsinki" >{hour.time}</Moment>
-                                    <p className='hourly-degrees'>{ Math.round(hour.temperature) }&#x00B0;C</p>
-                                </td>
-                            )
+                                return (
+                                    <td key = {index}>
+                                    <Skycons className='hourly-icons' color='white' icon={hour.icon.toUpperCase().replace(/-/g,'_')} autoplay={true}/>  
+                                    <Moment className='hourly-time' format="HH" unix tz="Europe/Helsinki" >{hour.time}</Moment>
+                                        <p className='hourly-degrees'>{ Math.round(hour.temperature) }&#x00B0;C</p>
+                                    </td>
+                                )
                             }
                         })
                     }     
@@ -29,51 +29,17 @@ const DailyDegrees = props => {
 
 }
 
-class WeatherHourly extends React.Component {
+const WeatherHourly = props => (
 
+    <div>
+        {!props.weather
+         ? <Circle />
+         : <div className='hourly'>
+            <p className='hourly-summary'>{props.weather.hourly.summary}</p>
+            <DailyDegrees weather={props.weather}/>
+           </div>}
+    </div>
 
-
-    state = {
-
-    };
-
-    componentDidMount(){
-
-    }
-
-
+);
     
-
-    render() {
-        
-        return (
-            <div>
-                {!this.props.weather
-                 ? <Circle />
-                 : <div className='hourly'>
-                    <p className='hourly-summary'>{this.props.weather.hourly.summary}</p>
-                    <DailyDegrees weather={this.props.weather}/>
-                   </div>}
-            </div>
-
-        );
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export default WeatherHourly;

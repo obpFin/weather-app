@@ -34,6 +34,7 @@ componentDidMount(){
 }
 
   render() {
+
     return (
         <Router>
           <div className="container" id="app">
@@ -43,14 +44,12 @@ componentDidMount(){
                 <Route path="/daily" render={(...props) => <WeatherDaily {...props} weather={this.state.weather} city={this.state.city} />} />
                 <Route path="/hourly" render={(...props) => <WeatherHourly {...props} weather={this.state.weather} city={this.state.city} />} />
                 <Redirect from="/" to="/summary" />
-
             </div>
             <div className='footer'>
                 <WeatherFooter weather={this.state.weather}/>
             </div>
           </div>  
       </Router>
-
     );   
   }
 }
