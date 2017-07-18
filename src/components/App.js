@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
 import '../App.css';
 import Nav from './Nav.js'
 import WeatherSummary from './WeatherSummary.js'
@@ -42,12 +42,15 @@ componentDidMount(){
                 <Route path="/summary" render={(...props) => <WeatherSummary {...props} weather={this.state.weather} city={this.state.city} />} />
                 <Route path="/daily" render={(...props) => <WeatherDaily {...props} weather={this.state.weather} city={this.state.city} />} />
                 <Route path="/hourly" render={(...props) => <WeatherHourly {...props} weather={this.state.weather} city={this.state.city} />} />
+                <Redirect from="/" to="/summary" />
+
             </div>
             <div className='footer'>
                 <WeatherFooter weather={this.state.weather}/>
             </div>
           </div>  
       </Router>
+
     );   
   }
 }

@@ -24,10 +24,10 @@ class WeatherDaily extends React.Component {
                 {!this.props.weather
                  ? <Circle />
                  : <div className='daily'>
-                    <p className='city'>{this.props.city}</p>
-                    <Skycons className='daily-icons' color='white' icon={this.props.weather.currently.icon.toUpperCase().replace(/-/g,'_')} autoplay={true}/>
+                    <p className='daily-summary'>{this.props.weather.daily.summary}</p>
+
+                    <Skycons className='daily-icons' color='white' icon={this.props.weather.daily.icon.toUpperCase().replace(/-/g,'_')} autoplay={true}/>
                     <p className='daily-degrees'>{Math.round(this.props.weather.currently.temperature)}&#x00B0;C</p>
-                    <p className='daily-summary'>{this.props.weather.currently.summary}</p>
                    </div>}
             </div>
 
