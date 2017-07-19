@@ -1,11 +1,12 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import '../App.css';
 import Nav from './Nav.js'
 import WeatherSummary from './WeatherSummary.js'
-import WeatherDaily from './WeatherDaily.js'
-import WeatherHourly from './WeatherHourly.js'
+import WeatherWeek from './WeatherWeek.js'
+import WeatherDay from './WeatherDay.js'
 import WeatherFooter from './WeatherFooter.js'
+import {Circle} from 'better-react-spinkit';
 import Api from '../utils/Api.js';
 
 class App extends React.Component {
@@ -18,6 +19,11 @@ constructor (props) {
   };
 
 }
+
+componentWillMount() {
+    this.setState({weather: null})     
+
+}    
 
 componentDidMount(){
   Api.fetchGoogleApiCoordinates()
@@ -36,20 +42,30 @@ componentDidMount(){
   render() {
 
     return (
+        
         <Router>
+        {!this.state.weather
+        
+         ? 
+        <div className='loading'>
+         <Circle size={100}/>
+         </div>
+         :
           <div className="container" id="app">
             <div className='main-content top'>
                 <Nav />
                 <Route path="/summary" render={(...props) => <WeatherSummary {...props} weather={this.state.weather} city={this.state.city} />} />
-                <Route path="/daily" render={(...props) => <WeatherDaily {...props} weather={this.state.weather} city={this.state.city} />} />
-                <Route path="/hourly" render={(...props) => <WeatherHourly {...props} weather={this.state.weather} city={this.state.city} />} />
+                <Route path="/week" render={(...props) => <WeatherWeek {...props} weather={this.state.weather} city={this.state.city} />} />
+                <Route path="/day" render={(...props) => <WeatherDay {...props} weather={this.state.weather} city={this.state.city} />} />
                 <Redirect from="/" to="/summary" />
             </div>
             <div className='footer'>
                 <WeatherFooter weather={this.state.weather}/>
             </div>
-          </div>  
-      </Router>
+          </div>
+          }  
+        </Router>
+     
     );   
   }
 }

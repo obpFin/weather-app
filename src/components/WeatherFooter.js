@@ -1,57 +1,23 @@
 import React from 'react';
 import Moment from 'react-moment';
-import {Circle} from 'better-react-spinkit';
 import 'moment-timezone';
 
+const WeatherFooter = props => (  
 
-class WeatherFooter extends React.Component {   
-
-    state = {
-
-    };
-
-    componentDidMount(){
-
-    }
-
-    render() {
-        return (
-            <div>
-                {!this.props.weather ?
-                 <div></div>
-                 : <div>
-                    <table>
-                        <tbody>
-                        <tr className='row'>
-                            <td className='row'>
-                                <Moment format="ddd, h:mm a" unix tz="Europe/Helsinki" >{(this.props.weather.currently.time)}</Moment>
-                            </td>
-                            <td className='row'>Windspeed: {Math.round(this.props.weather.currently.windSpeed * 1.6) + ' km/h'}</td>
-                            <td className='row'>Cloudcover: {Math.round((this.props.weather.currently.cloudCover * 100)) + '%'}</td>
-                            <td className='row'>Humidity: {(this.props.weather.currently.humidity * 100) + ' %'}</td>
-                        </tr>
-                        </tbody>
-                     </table>
-                   </div>}
-            </div>
-        );
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div>
+        <table>
+            <tbody>
+            <tr className='row'>
+                <td className='row'>
+                    <Moment format="ddd, H:mm " unix tz="Europe/Helsinki" >{(props.weather.currently.time)}</Moment>
+                </td>
+                <td className='row'>Tuulisuus: {Math.round(props.weather.currently.windSpeed * 1.6) + ' km/h'}</td>
+                <td className='row'>Pilvisyys: {Math.round((props.weather.currently.cloudCover * 100)) + '%'}</td>
+                <td className='row'>Kosteus: {(props.weather.currently.humidity * 100) + ' %'}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+);
 
 export default WeatherFooter;
