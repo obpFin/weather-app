@@ -41,8 +41,6 @@ a {
 }
 
 .container {
-  #background-image: url("./images/palmTrees.jpg");
-  #background-color: #53c0cc;
   max-width: 800px;
   margin: 0 auto;
   border-radius: 5px;
