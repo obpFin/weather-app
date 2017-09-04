@@ -2,7 +2,6 @@ import React from 'react';
 import Skycons from 'react-skycons';
 
 const WeatherSummary = props => (
-
     <div>
         <p className='summary-city'>{props.city}</p>
         <table>
@@ -19,7 +18,6 @@ const WeatherSummary = props => (
         </table>
         <p className='summary-summary'>{props.weather.currently.summary}</p>
     </div>
-
 );
     
 export default WeatherSummary;

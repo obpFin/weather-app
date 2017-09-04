@@ -26,16 +26,13 @@ const HourlyDegrees = props => {
             </tbody>
         </table>
     )
-
 }
 
 const WeatherDay = props => (
-
     <div>
         <p className='daily-summary'>{props.weather.hourly.summary}</p>
         <HourlyDegrees weather={props.weather}/>
     </div>
-
 );
     
 export default WeatherDay;

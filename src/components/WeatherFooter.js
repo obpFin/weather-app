@@ -3,7 +3,6 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 const WeatherFooter = props => (  
-
     <div>
         <table>
             <tbody>
@@ -13,7 +12,7 @@ const WeatherFooter = props => (
                 </td>
                 <td className='row'>Tuulisuus: {Math.round(props.weather.currently.windSpeed * 1.6) + ' km/h'}</td>
                 <td className='row'>Pilvisyys: {Math.round((props.weather.currently.cloudCover * 100)) + '%'}</td>
-                <td className='row'>Kosteus: {(props.weather.currently.humidity * 100) + ' %'}</td>
+                <td className='row'>Kosteus: {Math.round(props.weather.currently.humidity * 100) + ' %'}</td>
             </tr>
             </tbody>
         </table>

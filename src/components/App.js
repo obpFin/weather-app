@@ -22,7 +22,6 @@ constructor (props) {
 
 componentWillMount() {
     this.setState({weather: null})     
-
 }    
 
 componentDidMount(){
@@ -35,17 +34,14 @@ componentDidMount(){
           Api.fetchDarkSkyWeather(res.location.lat,res.location.lng)
         .then(res => {
           this.setState({weather: res})     
-        })
-        })   
+        });
+      });   
 }
 
   render() {
-
     return (
-        
         <Router>
         {!this.state.weather
-        
          ? 
         <div className='loading'>
          <Circle size={100}/>
@@ -65,7 +61,6 @@ componentDidMount(){
           </div>
           }  
         </Router>
-     
     );   
   }
 }
